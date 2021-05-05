@@ -1,0 +1,71 @@
+{% include "admin_header.html" %}
+<center>
+<form method="post">
+{% if data['updatess'] %}
+<h1>Update Hospital Details</h1>
+<table>
+		<tr>
+		<th>Hospital</th>
+		<td><input type="text" name="hospital" value="{{data['updatess'][0]['hospital']}}"></td>
+		</tr>
+		<tr>
+			<th>Place</th>
+			<td><input type="text" name="place" value="{{data['updatess'][0]['place']}}"></td>
+		</tr>
+		<tr>
+		<th>Phone Number</th>
+			<td><input type="text" name="phone" value="{{data['updatess'][0]['phone']}}"></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="submits" value="Update"></td>
+		</tr>
+	</table>
+	
+{% else %}
+<h1>Add Hospital Details</h1>
+
+
+<table>
+		<tr>
+		<th>Hospital</th>
+		<td><input type="text" name="hname"></td>
+		</tr>
+		<tr>
+			<th>Place</th>
+			<td><input type="text" name="place"></td>
+		</tr>
+		<tr>
+		<th>Phone Number</th>
+			<td><input type="text" name="phone"></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="submit" value="Add"></td>
+		</tr>
+	</table>
+	{% endif %}
+	</form>
+	<h1>Hospital Details</h1>
+	<table>
+		<tr>
+		<th>Sl No</th>
+		<th>Hospital</th>
+	
+		<th>Place</th>
+		<th> Phone Number</th>
+		</tr>
+		{% for row in data['hospital'] %}
+		<tr>
+		
+		<td>{{loop.index}}</td>
+		<td>{{row['hospital']}}</td>
+		<td>{{row['place']}}</td>
+		<td>{{row['phone']}}</td>
+		<td><a href="?action=update&hid={{row['hospital_id']}}">Update</a></td>
+		<td><a href="?action=delete&hid={{row['hospital_id']}}">Delete</a></td>
+		</tr>
+		{% endfor %}
+
+	</table>
+	</center>
+</body>
+</html>
