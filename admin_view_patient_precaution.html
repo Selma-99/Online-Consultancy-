@@ -1,0 +1,27 @@
+{% include "admin_header.html" %}
+<center><h1>
+	Precaution
+</h1>
+<table>
+	<tr>
+	<th>Sl No</th>
+	<th>File</th>
+	<th>Details</th>
+	<th>Date</th>
+	</tr>
+
+{% for row in data['precaution'] %}
+		</tr>
+		<td>{{loop.index}}</td>
+		<td>{{row['file_id']}}</td>
+		<td>{{row['details']}}</td>
+		<td>{{row['date']}}</td>
+
+
+		<tr>
+		{% endfor %}
+
+</table>
+</center>
+</body>
+</html>
