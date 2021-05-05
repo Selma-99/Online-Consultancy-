@@ -1,0 +1,35 @@
+
+{% include "admin_header.html" %}
+
+<center>
+	<h1>Patient Details</h1>
+
+<table>
+		<tr>
+			<th>Sl No</th>
+			<th>Patient Name</th>
+			<th>Age</th>
+			<th>Gender</th>
+			<th>Phone Number</th>
+			<th>Email</th>
+			</tr>
+		{% for row in data['patient'] %}
+		<tr>
+		<td>{{loop.index}}</td>
+		<td>{{row['fname']}} {{row['lname']}}</td>
+		<td>{{row['age']}}</td>
+		<td>{{row['gender']}}</td>
+		<td>{{row['phone']}}</td>
+		<td>{{row['email']}}</td>
+		<td><a href="admin_filesuploaded">View Files</a>
+
+
+		</tr>
+		{% endfor %}
+
+			
+		
+		</table>
+		</center>
+</body>
+</html>
