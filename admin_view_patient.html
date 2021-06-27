@@ -1,35 +1,24 @@
-
 {% include "admin_header.html" %}
-
 <center>
 	<h1>Patient Details</h1>
-
-<table>
+	<table class="table" style="width: 700px">
 		<tr>
 			<th>Sl No</th>
 			<th>Patient Name</th>
-			<th>Age</th>
-			<th>Gender</th>
-			<th>Phone Number</th>
+			<th>Phone</th>
 			<th>Email</th>
-			</tr>
+		</tr>
+
 		{% for row in data['patient'] %}
+
 		<tr>
-		<td>{{loop.index}}</td>
-		<td>{{row['fname']}} {{row['lname']}}</td>
-		<td>{{row['age']}}</td>
-		<td>{{row['gender']}}</td>
-		<td>{{row['phone']}}</td>
-		<td>{{row['email']}}</td>
-		<td><a href="admin_filesuploaded">View Files</a>
-
-
+			<td>{{loop.index}}</td>
+			<td>{{row['fname']}} {{row['lname']}}</td>
+			<td>{{row['phone']}}</td>
+			<td>{{row['email']}}</td>
+			<td><a class="btn btn-info" href="admin_view_files?pid={{row['patient_id']}}">View Files</a></td>
 		</tr>
 		{% endfor %}
-
-			
-		
-		</table>
-		</center>
-</body>
-</html>
+	</table>
+</center>
+{% include "footer.html" %}

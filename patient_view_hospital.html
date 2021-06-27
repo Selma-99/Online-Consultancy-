@@ -1,0 +1,26 @@
+{% include "patient_header.html" %}
+<center>
+	<table class="table" style="width: 700px;">
+		<h1>Hospital Details</h1>
+		<tr>
+			<th>Sl No</th>
+			<th>Hospital</th>
+			<th>Place</th>
+			<th>Phone</th>
+			
+		</tr>
+		{% for row in data['hospital'] %}
+
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['hospital']}}</td>
+			<td>{{row['place']}}</td>
+			<td>{{row['phone']}}</td>
+			<td><a class="btn btn-info" href="patient_view_doctor?hid={{row['hospital_id']}}">View Doctors</a></td>
+		</tr>
+		{% endfor %}
+		
+	</table>
+</center>
+{% include "subfooter.html" %}
+{% include "footer.html" %}

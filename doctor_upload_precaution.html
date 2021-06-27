@@ -1,0 +1,40 @@
+{% include "doctor_header.html" %}
+<center>
+	<form method="post" enctype="multipart/form-data">
+		<h1>Upload Precaution</h1>
+		<table class="table" style="width: 700px;"> 
+			<tr>
+				<th>Precaution</th>
+				<td><textarea name="pre" class="form-control" required></textarea></td>
+			</tr>
+			<tr>
+				<th>Upload Document</th>
+				<td><input type="file" name="file" class="form-control"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" name="submit" value="UPLOAD" class="btn btn-success"></td>
+			</tr>
+		</table>
+		
+	</form>
+	<h1>Precautions Added</h1>
+	<table class="table" style="width: 700px;">
+		<tr>
+			<th>Sl No</th>
+			<th>Illness</th>
+			<th>Symptoms</th>
+			<th>Precaution</th>
+			<th>Document</th>
+		</tr>
+		{% for row in data['precaution'] %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['illness']}}</td>
+			<td>{{row['symptoms']}}</td>
+			<td>{{row['details']}}</td>
+			<td><a href="/{{row['filepath']}}" download=""><span style=" color : red">Click Here</span></a></td></a></td>
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+{% include "footer.html" %}

@@ -1,0 +1,55 @@
+{% include "patient_header.html" %}
+<center>
+	<form method="post" enctype="multipart/form-data">
+		<h1>Enter Details Here</h1>
+		<table class="table" style="width: 500px;">
+			<tr>
+				<th>Illness</th>
+				<td><input type="text" name="ill" class="form-control" required pattern="[a-zA-Z\s]{0,50}"></td>
+			</tr>
+			<tr>
+				<th>Symptoms</th>
+				<td><input type="text" name="sym" class="form-control" required pattern="[a-zA-Z\s]{0,50}" ></td>
+			</tr>
+			<tr>
+				<th>Upload File</th>
+				<td><input type="file" name="file" placeholder="in pdf format" class="form-control" required ></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" name="submit" value="SUBMIT" class="btn btn-success"></td>
+			</tr>
+			
+		
+		</table>
+		</form>
+		<h1>Illness Details</h1>
+		<table class="table" style="width: 700px;">
+			<tr>
+				<th>Sl No</th>
+				<th>Doctor</th>
+				<th>Illness</th>
+				<th>Symptoms</th>
+				<th>Document</th>
+				<th>Uploaded On</th>
+			</tr>
+
+
+			{% for row in data['ill'] %}
+			<tr>
+				<td>{{loop.index}}</td>
+				<td>{{row['doctor_name']}}</td>
+				<td>{{row['illness']}}</td>
+				<td>{{row['symptoms']}}</td>
+				<td><a class="btn btn-info" href="/{{row['uploadfile']}}" download>Download file</a></td>
+				<td>{{row['date']}}</td>
+				<td><a class="btn btn-info" href="?action=delete&id={{row['file_id']}}&did={{data['did']}}">DELETE</a></td>
+				<td><a class="btn btn-info" href="patient_view_precaution?fid={{row['file_id']}}">View Precaution</a></td>
+				<!-- <td><embed src="/{{row['uploadfile']}}" width="80px" height="80px"></embed></td> -->
+			</tr>
+			{% endfor %}
+			
+		</table>
+	
+</center>
+{% include "subfooter.html" %}
+{% include "footer.html" %}

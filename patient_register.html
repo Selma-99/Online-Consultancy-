@@ -51,7 +51,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-        <a class="navbar-brand">
+    <a class="navbar-brand">
                   <!--   <img src="/static/img/logo.png" alt="" width="150" height="40" /> -->
                   <p>Online<br>Consultancy</p>
                 </a>
@@ -120,27 +120,41 @@
 						
 							<div class="panel panel-skin">
 							<div class="panel-heading">
-									<h3 class="panel-title"><span class="fa fa-pencil-square-o"></span> Login Here </h3>
+									<h3 class="panel-title" align="center"><span class="fa fa-pencil-square-o"></span> Patient Registration </h3>
 									</div>
 									<div class="panel-body">
 										<!-- <h1>Login Here</h1><br> -->
 	<form method="post">
-		<table>
+		<!-- <h1>Patient Registration</h1> -->
+		<table align="center">
+			<tr>
+				<th>First Name</th>
+				<td><input type="text" name="fname" pattern="[a-zA-Z]{0,30}" class="form-control" required></td>
+			</tr>
+			<tr>
+				<th>Last Name</th>
+				<td><input type="text" name="lname" pattern="[a-zA-Z]{0,30}" class="form-control" required></td>
+			</tr>
+			<tr>
+				<th>Phone</th>
+				<td><input type="text" name="phone" pattern="[0-9]{10}" class="form-control" required></td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td><input type="email" name="email" class="form-control" required></td>
+			</tr>
 			<tr>
 				<th>Username</th>
-				<td><span></span></td>
-				<td><input type="text" required="" class="form-control" name="uname"></td>
+				<td><input type="text" name="uname" required class="form-control"></td>
 			</tr>
-			<tr><th><td><br></td></th></tr>
 			<tr>
 				<th>Password</th>
-				<td><span></span></td>
-				<td><input type="password" required="" class="form-control" name="pwd"></td>
+				<td><input type="text" name="pwd" required class="form-control"></td>
 			</tr>
-			<tr><th><td><br></td></th></tr>
 			<tr>
-				<td colspan="2" align="center"><input align="center" type="submit" class="btn btn-success" name="submit" value="submit"></td>
+				<td colspan="2" align="center"><input type="submit" name="submit" value="REGISTER"></td>
 			</tr>
+			
 		</table>
 	</form>
 									
@@ -745,4 +759,49 @@
 </center><br><br><br> -->
   
        
-{% include 'footer.html' %}
+<!-- {% include 'footer.html' %}
+<center>
+	<form method="post">
+		<h1>Patient Registration</h1>
+		<table>
+			<tr>
+				<th>First Name</th>
+				<td><input type="text" name="fname"></td>
+			</tr>
+			<tr>
+				<th>Last Name</th>
+				<td><input type="text" name="lname"></td>
+			</tr>
+			<tr>
+				<th>Phone</th>
+				<td><input type="text" name="phone"></td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td><input type="email" name="email"></td>
+			</tr>
+			<tr>
+				<th>Username</th>
+				<td><input type="text" name="uname"></td>
+			</tr>
+			<tr>
+				<th>Password</th>
+				<td><input type="text" name="pwd"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" name="submit" value="REGISTER"></td>
+			</tr>
+			
+		</table>
+	</form>
+</center>
+{% include "footer.html" %} -->
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+    {% for message in messages %}
+    <script>alert("{{ message }}")</script>
+    {% endfor %}
+
+    {% endif %}
+{% endwith %}

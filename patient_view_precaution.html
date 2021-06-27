@@ -1,0 +1,24 @@
+{% include "patient_header.html" %}
+<center>
+	<h1>Precaution To be Taken</h1>
+	<table class="table" style="width: 700px;">
+		<tr>
+			<th>Sl No</th>
+			<th>Doctor Name</th>
+			<th>Precaution</th>
+			<th>File</th>
+			<td>uploaded on</td>
+		</tr>
+		{% for row in data['precaution'] %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['doctor_name']}}</td>
+			<td>{{row['details']}}</td>
+			<td><a class="btn btn-info" href="/{{row['filepath']}}" download>download</a></td>
+			<td>{{row['date']}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+{% include "subfooter.html" %}
+{% include "footer.html" %}

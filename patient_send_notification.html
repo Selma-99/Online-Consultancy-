@@ -1,0 +1,60 @@
+{% include "patient_header.html" %}
+<center>
+
+
+	<form method="post">
+
+
+	<table class="table" style="width: 700px;">
+		<h1>Send Notifications</h1>
+		<tr>
+			
+			<th>Doctor</th>
+			<td><select name="doctor_id">
+				{% for row in data['doctors'] %}
+					<option value="{{row['doctor_id']}}">{{row['doctor_name']}}</option>
+					
+
+				{% endfor %}
+				</select>
+
+			</td>
+			
+		</tr>
+		<tr>
+			<th>Notification</th>
+			<td><input type="text" name="notification"></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><input type="submit" name="submit" class="btn btn-info"></td>
+		</tr>
+		
+		
+	</table>
+	<table class="table" style="width: 700px;">
+		<h1>Notifications</h1>
+		<tr>
+			<th>Sl No</th>
+			<th>Doctor</th>
+			<th>Notification</th>
+			<th>Date</th>
+			<th>Status</th>
+			
+		</tr>
+		{% for row in data['not'] %}
+
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['doctor_name']}}</td>
+			<td>{{row['notification']}}</td>
+			<td>{{row['date_time']}}</td>
+			<td>{{row['status']}}</td>
+			<td><a href="?action=delete&id={{row['notification_id']}}" class="btn btn-info">Delete</a></td>
+		</tr>
+		{% endfor %}
+		
+	</table>
+</form>
+</center>
+{% include "subfooter.html" %}
+{% include "footer.html" %}

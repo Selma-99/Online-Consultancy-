@@ -1,0 +1,29 @@
+{% include "admin_header.html" %}
+<center>
+	<h1>Documents uploaded</h1>
+
+	<table class="table" style="width: 700px">
+		<tr>
+			<th>Sl No</th>
+			<th>Illness</th>
+			<th>symptoms</th>
+			<th>doc. from patient</th>
+			<th>Doctor</th>
+	<!-- 		<th>Precaution</th> -->
+			<th>Doc. from doctor</th>
+		</tr>
+		{% for row in data['files'] %}
+		<tr>
+			<td>{{loop.index}}</td> 
+			<td>{{row['illness']}}</td>
+			<td>{{row['symptoms']}}</td>
+			<td><a href="/{{row['uploadfile']}}"><span style="color : red">Click Here</span></a></td>
+			<td>{{row['dname']}}</td>
+		<!-- 	<td>{{row['details']}}</td> -->
+			<td><a href="/{{row['filepath']}}"><span style="color : red">Click Here</span></a></td>
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+
+{% include "footer.html" %}

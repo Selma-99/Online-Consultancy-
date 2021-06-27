@@ -1,0 +1,114 @@
+{% include "doctor_header.html" %}
+<center>
+	<br><br><br><br>
+	<form method="post">
+		{% if data['action']=='view' %}
+		<h1>Patient Profile</h1>
+		<table class="table" style="width: 500px;">
+
+			<tr >
+				<th>Name</th>
+				<th>:</th>
+				<td>{{data['name']}}</td>
+
+			</tr>
+		
+
+			<tr>
+				<th>Phone</th>
+				<th>:</th>
+				<td>{{data['phone']}}</td>
+			</tr>
+
+			<tr>
+				<th>Email</th>
+				<th>:</th>
+				<td>{{data['email']}}</td>
+			</tr>
+			<tr>
+				<td align="center"><a class="btn btn-info" href="?action=illness&pid={{data['pid']}}">View Illness</a></td>
+				<td></td>
+				<td align="center"><a class="btn btn-info" href="doctor_chat?pid={{data['pid']}}">Chat</a></td>
+			</tr>
+		</table>
+		{% elif data['action']=='illness' %}
+		<h1>Patient Profile</h1>
+		<table class="table" style="width: 700px;">
+			<tr>
+				<th>Name</th>
+				<th>:</th>
+				<td>{{data['name']}}</td>
+			</tr>
+
+			<tr>
+				<th>Phone</th>
+				<th>:</th>
+				<td>{{data['phone']}}</td>
+			</tr>
+
+			<tr>
+				<th>Email</th>
+				<th>:</th>
+				<td>{{data['email']}}</td>
+			</tr>
+			<tr>
+				<td  align="center"><a class="btn btn-info"  href="?action=illness&pid={{data['pid']}}">View Illness</a></td>
+				<td></td>
+				<td  align="center"><a class="btn btn-info" href="doctor_chat?pid={{data['pid']}}">Chat</a></td>
+				
+			</tr>
+		</table>
+		<h1>Illness Details</h1>
+		<table class="table" style="width: 700px;">
+			<tr>
+				<th>Illness</th>
+				<th>Symptoms</th>
+				<th>Files</th>
+				<th>File Uploaded On</th>
+				
+				
+			</tr>
+			{% for row in data['illness'] %}
+			<tr>
+				<td>{{row['illness']}}</td>
+				<td>{{row['symptoms']}}</td>
+				<td><a  href="/{{row['uploadfile']}}" download><span style=" color : red">Click Here</span></a></td>
+				<td>{{data['date']}}</a></td>
+				<td><a class="btn btn-info" href="doctor_upload_precaution?pid={{row['patient_id']}}&fid={{row['file_id']}}">Upload Precaution</a></td>
+
+				
+			</tr>
+			{% endfor %}
+			
+
+		</table>
+		 
+		{% else %}
+		<table class="table" style="width: 500px;">
+			<h1>Patients List</h1>
+			<tr>
+			<th>Sl No</th>
+			<th>Name</th>
+			<th></th>
+			</tr>
+
+			{% for row in data['profile'] %}
+			<tr>
+				<td>{{loop.index}}</td>
+				<td>{{row['name']}}</td>
+				<td><a class="btn btn-info" href="?action=view&pid={{row['patient_id']}}">View Profile</a></td>
+			</tr>
+
+			{% endfor %}
+		</table> 
+		
+		
+		{% endif %}
+
+
+
+		
+	</form>
+</center>
+<br><br><br><br>
+{% include "footer.html" %}

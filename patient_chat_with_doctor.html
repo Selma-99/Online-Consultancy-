@@ -1,0 +1,33 @@
+{% include "patient_header.html" %}
+<center>
+	<form method="post">
+		<h1>Chat Box</h1>
+		<div style="overflow-y: scroll; width: 500px; height: 500px;background-color: white; opacity: 0.8; " >
+	<table class="table" style="width: 100px; background-color: black; opacity: 0.7;" >
+		{% for row in data['chat'] %}
+		
+			{% if row['sender_type']=='patient'%}
+			<tr>
+				<div style="color: green; " align="right" ><strong>{{row['message']}}</strong></div>
+			
+			</tr>
+			{% else %}
+			<tr>
+			<div style="color: blue;" align="left" ><strong>{{row['message']}}</strong></div>
+			</tr>
+			{% endif %}
+		
+		{% endfor %}
+	</table>
+	</div>
+	<br>
+	<table>
+		<tr>
+			<th><input type="text" name="message" required></th>
+			<td><input type="submit" name="submit" value="SEND" class="btn btn-success"></td>
+		</tr>
+	</table>
+	</form>
+</center>
+{% include "subfooter.html" %}
+{% include "footer.html" %}

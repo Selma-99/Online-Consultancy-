@@ -1,0 +1,26 @@
+{% include "patient_header.html" %}
+<center>
+	<table class="table" style="width: 700px;">
+		<h1>Doctors Details</h1>
+		<tr>
+			<th>Sl No</th>
+			<th>Doctor Name</th>
+			<th>Phone</th>
+			<th>Email</th>
+		</tr>
+
+
+		{% for row in data['doctor'] %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['doctor_name']}}</td>
+			<td>{{row['phone']}}</td>
+			<td>{{row['email']}}</td>
+			<td><a class="btn btn-info" href="patient_chat_with_doctor?did={{row['doctor_id']}}">CHAT</a></td>
+			<td><a class="btn btn-info" href="patient_upload_illness?did={{row['doctor_id']}}">Upload Illness </a></td>
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+{% include "subfooter.html" %}
+{% include "footer.html" %}
